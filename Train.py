@@ -2,6 +2,7 @@ import csv
 from random import randrange
 import random
 import heapq
+#import numpy as np
 
 def find_neighbours(n, rand, o_list): 
     "return a list of n lists with new random times based on the original list of times passed to the function"
@@ -18,6 +19,52 @@ def find_neighbours(n, rand, o_list):
 
             random_num = randrange(rand)
             operation = randrange(0,2) #add if 1, substr if 0
+
+            if operation == 0: 
+                if o_list[i] <= n_list [i-1]+3:
+                    if o_list[i] + rand - 1 <= n_list[i-1]+3:
+                        n_list.append(n_list[i]+3)
+                        continue
+                    while o_list[i]+random_num <= n_list[i-1]+3: 
+                        random_num = randrange(rand) 
+                    n_list.append(o_list[i]+random_num)
+                    continue
+
+                while o_list[i]-random_num <= n_list[i-1]+3: 
+                    random_num = randrange(rand) 
+                n_list.append(o_list[i]-random_num)  
+                
+            if operation == 1:
+                if o_list[i] + rand - 1 <= n_list[i-1]+3:
+                        n_list.append(n_list[i-1]+3)
+                        continue
+                while o_list[i]+random_num <= n_list[i-1]+3: 
+                        random_num = randrange(rand)
+                n_list.append(o_list[i]+random_num)
+
+        n_list.append(o_list[15])
+        r_list.append(n_list)
+        loop_count += 1
+
+    return r_list
+
+def find_neighbours_normal(n, rand, o_list): 
+    "return a list of n lists with new random times based on the original list of times passed to the function"
+    "rand is the range that we want to modify each of the original list's element by"
+    r_list = []
+    loop_count = 0
+    while loop_count < n:
+        n_list = [0]
+        for i in range(1,15):
+            if i == 14:
+                if n_list[i-1] + 3 >= o_list[15]:
+                    #don't increment loop_count
+                    break #list is not valid, regenerate
+
+            random_num = np.random.normal(0, rand)
+            operation = 1
+            if random_num < 0:
+                operation = 0
 
             if operation == 0: 
                 if o_list[i] <= n_list [i-1]+3:
