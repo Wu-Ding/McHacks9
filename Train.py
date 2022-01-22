@@ -1,11 +1,12 @@
 import csv
 from random import randrange
+import random
 import heapq
 
-def find_neighbours(n, o_list): #has to be bigger by at least 3
+def find_neighbours(n, rand, o_list): 
     "return a list of n lists with new random times based on the original list of times passed to the function"
+    "rand is the range that we want to modify each of the original list's element by"
     r_list = []
-    rand = 11
     loop_count = 0
     while loop_count < n:
         n_list = [0]
@@ -20,6 +21,11 @@ def find_neighbours(n, o_list): #has to be bigger by at least 3
 
             if operation == 0: 
                 if o_list[i] <= n_list [i-1]+3:
+                    if o_list[i] + rand - 1 <= n_list[i-1]+3:
+                        n_list.append(n_list[i]+3)
+                        continue
+                    while o_list[i]+random_num <= n_list[i-1]+3: 
+                        random_num = randrange(rand) 
                     n_list.append(o_list[i]+random_num)
                     continue
 
@@ -28,6 +34,11 @@ def find_neighbours(n, o_list): #has to be bigger by at least 3
                 n_list.append(o_list[i]-random_num)  
                 
             if operation == 1:
+                if o_list[i] + rand - 1 <= n_list[i-1]+3:
+                        n_list.append(n_list[i-1]+3)
+                        continue
+                while o_list[i]+random_num <= n_list[i-1]+3: 
+                        random_num = randrange(rand)
                 n_list.append(o_list[i]+random_num)
 
         n_list.append(o_list[15])
@@ -208,7 +219,7 @@ def write_csv(starts, capacities, passengers):
         
     
 #usages:
-#print(find_neighbours(5,[0, 8, 18, 27, 35, 38, 48, 57, 67, 78, 88, 98, 108, 128, 155, 178]))
+print(find_neighbours(5, 11, [0, 8, 18, 27, 35, 38, 48, 57, 67, 78, 88, 98, 108, 128, 155, 178]))
 #print(format_l([0, 8, 18, 27, 35, 38, 48, 57, 67, 78, 88, 98, 108, 128, 155, 178]))
 
 #====write_csv====
