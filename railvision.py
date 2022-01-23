@@ -49,6 +49,7 @@ def one_train(start, capacity, pass_a, pass_b, pass_c):
     Returns the total wait time of the passengers boarding the train
     
     Assumes that pass_a, pass_b, pass_c are priority queues
+    pass_a, pass_b, pass_c are modified with each calling of the function
     Each element of the priority queue has form (t, n) where
         t: passenger arrival time at station
         n: number of passengers at the station that arrived at that time
@@ -364,7 +365,7 @@ def find_min(x0, capacities):
 "------------------------------------------------------------------------------------------------------------------------------------"
 ### Formatting and writing the csv file ###
   
-def format(t):
+def format_t(t):
     """
     (int) -> str
     
@@ -386,7 +387,7 @@ def format_l(l):
     """
     formatted_list = []
     for t in l:
-        formatted_list.append(format(t))
+        formatted_list.append(format_t(t))
     return formatted_list 
 
 
@@ -408,7 +409,7 @@ def get_info(start, capacity, pass_a, pass_b, pass_c):
     else: 
         info.append("L8")
     #A_ArrivalTime
-    info.append(format(start))
+    info.append(format_t(start))
     #A_AvailCap
     info.append(str(capacity))
 
@@ -444,7 +445,7 @@ def get_info(start, capacity, pass_a, pass_b, pass_c):
     info.append(str(board_tot))
     board_tot = 0
     #B_ArrivalTime
-    info.append(format(start+11))
+    info.append(format_t(start+11))
     #B_AvailCap
     info.append(str(capacity))
 
@@ -482,7 +483,7 @@ def get_info(start, capacity, pass_a, pass_b, pass_c):
 
     #Getting the wait times for passengers from C
     #C_ArrivalTime
-    info.append(format(start+23))
+    info.append(format_t(start+23))
     #C_AvailCap
     info.append(str(capacity))
 
@@ -516,7 +517,7 @@ def get_info(start, capacity, pass_a, pass_b, pass_c):
     #C_Boarding
     info.append(str(board_tot))
     #U_Arrival 
-    info.append(format(start+37))
+    info.append(format_t(start+37))
     #U_AvailCap 
     info.append(str(capacity))
     #U_Offloading
