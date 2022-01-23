@@ -2,7 +2,7 @@
 
 This repository contains the code for the data analysis and the CSV generation. The visualization tool is not in this repo, but is available upon further request.
 
-![](Dragster.jpg)
+![](https://github.com/Wu-Ding/McHacks9/blob/76010f3cb47f80284a14f1b6397560a107831a8f/Assets/sc3.png)
 
 
 ## Inspiration
