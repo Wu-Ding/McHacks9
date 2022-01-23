@@ -1,5 +1,10 @@
 # McHacks9 - RailVision Project
 
+This repository contains the code for the data analysis and the CSV generation. The visualization tool is not in this repo, but is available upon further request.
+
+![](Dragster.jpg)
+
+
 ## Inspiration
 After years of taking the STM and having one too many experiences of waiting in the freezing weather for a bus that would never come, the problem proposed by the RailVision challenge was one that was close to our hearts. Having a better organized public transit system and minimizing wait times are keys to a better and greener future in the transportation world.
 
